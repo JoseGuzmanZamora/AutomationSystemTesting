@@ -5,12 +5,14 @@
 
         <groups>
             <run>
-                <include name="createAccount"/>
+                <include name="forgetPassword"/>
             </run>
         </groups>
 
         <classes>
             <class name="systemTesting.InitialSystemTests"/>
+            <class name="systemTesting.SessionTests"/>
+            <class name="systemTesting.ForgetPassword"></class>
         </classes>
     </test>
 </suite>
