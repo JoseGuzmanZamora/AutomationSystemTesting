@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestAutomation" data-provider-thread-count="15">
+
+    <test name="TestSuite">
+
+        <groups>
+            <run>
+                <include name="createAccount"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="systemTesting.InitialSystemTests"/>
+        </classes>
+    </test>
+
+</suite>
