@@ -16,4 +16,8 @@
             <class name="systemTesting.MainNavigation"></class>
         </classes>
     </test>
+
+    <listeners>
+        <listener class-name="listeners.AutomationListener"/>
+    </listeners>
 </suite>

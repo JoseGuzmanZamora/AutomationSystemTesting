@@ -7,6 +7,18 @@
     <groupId>org.flashcards</groupId>
     <artifactId>AutomationSystemTesting</artifactId>
     <version>1.0</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>6</source>
+                    <target>6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
     <dependencies>
@@ -29,6 +41,20 @@
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>1.0.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>4.3.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20200518</version>
         </dependency>
     </dependencies>
 </project>
