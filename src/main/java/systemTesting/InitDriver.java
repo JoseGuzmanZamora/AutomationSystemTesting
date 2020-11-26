@@ -1,5 +1,6 @@
 package systemTesting;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -7,6 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -22,6 +24,7 @@ public class InitDriver {
     protected WebDriverWait wait;
     private String geckoDriver = "";
     private String chromeDriver = "";
+    public String url = "http://localhost:8080";
 
     @Parameters({"browser"})
     @BeforeClass(alwaysRun = true)
@@ -84,5 +87,45 @@ public class InitDriver {
             geckoDriver = "drivers/windows/geckodriver.exe";
             chromeDriver = "drivers/windows/chromedriver.exe";
         }
+    }
+
+    public void genericLogin(){
+        String username = "automation";
+        String email = "automation@testing.com";
+        String pass = "Automation!";
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginTitle")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginNowBtn")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("createAccountBtn")));
+
+        // Try logging without entering information
+        driver.findElement(By.id("loginNowBtn")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginTitle")));
+
+        // Now enter the login information
+        driver.findElement(By.id("loginEmail")).sendKeys(email);
+
+        // Try entering without password
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginTitle")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginNowBtn")));
+
+        // Enter the password and continue
+        driver.findElement(By.id("loginPassword")).sendKeys(pass);
+
+        driver.findElement(By.id("loginNowBtn")).click();
+    }
+
+    public void genericLogout(){
+        // Finally log out
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("profileListItem")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("verticalMenuBtn")));
+        driver.findElement(By.id("verticalMenuBtn")).findElement(By.tagName("i")).click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Log Out')]")));
+        driver.findElement(By.xpath("//*[contains(text(),'Log Out')]")).click();
+
+        // Check once again we are at the login page
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginTitle")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginNowBtn")));
     }
 }

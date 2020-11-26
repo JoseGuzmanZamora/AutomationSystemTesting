@@ -12,10 +12,10 @@ public class InitialSystemTests extends InitDriver {
 
     @BeforeClass(alwaysRun = true)
     public void initUrl(){
-        driver.get("http://localhost:8080");
+        driver.get(url);
     }
 
-    @Test(groups = {"createAccount"})
+    @Test(groups = {"createAccount", "all"})
     public void createAccount(){
         //Faker setup
         Faker faker = new Faker();
@@ -50,15 +50,6 @@ public class InitialSystemTests extends InitDriver {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'ingles')]")));
 
         // Finally log out
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("profileListItem")));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("verticalMenuBtn")));
-        driver.findElement(By.id("verticalMenuBtn")).findElement(By.tagName("i")).click();
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Log Out')]")));
-        driver.findElement(By.xpath("//*[contains(text(),'Log Out')]")).click();
-
-        // Check once again we are at the login page
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginTitle")));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginNowBtn")));
+        genericLogout();
     }
 }

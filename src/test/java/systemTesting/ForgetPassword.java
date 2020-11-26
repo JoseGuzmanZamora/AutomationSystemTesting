@@ -10,10 +10,10 @@ public class ForgetPassword extends InitDriver {
 
     @BeforeClass(alwaysRun = true)
     public void initUrl(){
-        driver.get("http://localhost:8080");
+        driver.get(url);
     }
 
-    @Test(groups = {"forgetPassword"})
+    @Test(groups = {"forgetPassword", "all"})
     public void forgetPassword(){
         //Faker setup
         Faker faker = new Faker();

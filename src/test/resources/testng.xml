@@ -5,7 +5,7 @@
 
         <groups>
             <run>
-                <include name="forgetPassword"/>
+                <include name="all"/>
             </run>
         </groups>
 
@@ -13,6 +13,7 @@
             <class name="systemTesting.InitialSystemTests"/>
             <class name="systemTesting.SessionTests"/>
             <class name="systemTesting.ForgetPassword"></class>
+            <class name="systemTesting.MainNavigation"></class>
         </classes>
     </test>
 </suite>
