@@ -24,7 +24,7 @@ public class InitDriver {
     protected WebDriverWait wait;
     private String geckoDriver = "";
     private String chromeDriver = "";
-    public String url = "http://localhost:8080";
+    public String url = "https://flashcards-ufm.web.app";
 
     @Parameters({"browser"})
     @BeforeClass(alwaysRun = true)
